@@ -1,30 +1,27 @@
-# ydc
+# About
 
-> A Vue.js project
+>此项目是vue+node（koa）+mysql构建的自媒体发布平台
 
-## Build Setup
+# 技术栈
+>vue2 + fetch + vue-router + webpack + ES6/7 + echart + vue-quill-editor + koa + mysql
 
-``` bash
-# install dependencies
-npm install
+# 项目运行
+  git clone https://github.com/qyuanq/ydc.git
+  
+## 前端启动
+  cd ydc/ydc
+  
+  npm install
+  
+  npm run start
+  
+  访问：http://localhost:8080
+  
+## 服务端启动
+  cd ydc/server
+  
+  npm install
+  
+  node server
+# 功能列表
 
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
