@@ -24,8 +24,8 @@
                   </div>
                 </div>
               </div>
-              <div class="ydc-release-form-text">
-                <textarea name="content" style="width: 100%;">请输入内容</textarea>
+              <div class="edit_container">
+                <quill-editor v-model="content" ref="myQuillEditor" class="editor" :options="editorOption" @blur="onEditorBlur($event)" @focus="onEditorFocus($event)" @change="onEditorChange($event)"></quill-editor>
               </div>
               <div class="ydc-form-city">
                 <div class="aui-card-form-item">
@@ -58,8 +58,6 @@
                 </div>
               </div>
             </form>
-
-
       </template>
       <template slot="tab2">
           <div class="ydc-release-form-group ">
@@ -111,9 +109,14 @@
 <script>
   import tabPanelRelease from '@/components/tabPanelRelease'
   import {SERVER} from '@/config'
-  import {fetch_form} from "../lib/fetch";
+  import {fetch_form} from "../lib/fetch"
+  import {quillEditor} from "vue-quill-editor"
+  import 'quill/dist/quill.core.css'
+  import 'quill/dist/quill.snow.css'
+  import 'quill/dist/quill.bubble.css'
 
-    export default {
+
+  export default {
         name: "release",
         data(){
           return {
@@ -124,7 +127,9 @@
               {title:'发布文章',soltname:'tab1'},
               {title:'发布图集',soltname:'tab2'},
               {title:'测试',soltname:'tab3'}
-            ]
+            ],
+            content: `<h3>文本编辑器</h3>`,
+            editorOption: {}
           }
         },
       methods:{
@@ -147,17 +152,29 @@
             this.catalogs.push(result);
           }
           console.log(this.catalogs);
-        }
+        },
+        onEditorReady(editor){},
+        onEditorBlur(){},
+        onEditorFocus(){},
+        onEditorChange(){}
       },
+    computed:{
+       editor(){
+         return this.$refs.myQuillEditor.quill;
+       }
+    },
       async created(){
           let res=await fetch(SERVER+'api/catalog/0');
           let catalogs=await res.json();
           this.catalogs=[catalogs];
       },
-        components:{tabPanelRelease}
+        components:{tabPanelRelease,quillEditor}
     }
 </script>
 
 <style scoped>
-
+.editor{
+  height:350px;
+  margin-bottom:100px;
+}
 </style>

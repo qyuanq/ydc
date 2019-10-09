@@ -301,7 +301,7 @@
 
 <script>
 
-  import '@/assets/js/customer'
+  // import '@/assets/js/customer'
 
     export default {
         name: "customer",
