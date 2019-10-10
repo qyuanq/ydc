@@ -31,16 +31,15 @@
   import Footer from './components/footer'
   import Index from '@/pages/index'
   import Login from '@/pages/login'
-
-export default {
-  name: 'App',
-  components:{Header,Menu,Footer,Index,Login},
-  created(){
-    if(!localStorage.token){
-      this.$router.push('/login');
+  export default {
+    name: 'App',
+    components:{Header,Menu,Footer,Index,Login},
+    created(){
+      if(!localStorage.token){
+        this.$router.push('/login');
+      }
     }
   }
-}
 </script>
 
 <style>
@@ -50,12 +49,10 @@ export default {
     flex: 0 0 20.83333%;
     max-width: 20.83333%
   }
-
   .ydc-column-8 {
     -ms-flex: 0 0 79.16667%;
     -webkit-flex: 0 0 79.16667%;
     flex: 0 0 79.16667%;
     max-width: 79.16667%
   }
-
 </style>

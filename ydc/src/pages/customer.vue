@@ -27,15 +27,23 @@
             <input type="text" placeholder="请输入关键词进行搜索" style="width:90%">
             <button class="ydc-group-button" style="background-color:#ff5f5f">搜 索</button>
           </div>
-          <div class="ydc-panes">
-            <div class="ydc-pane" v-for="data,index in datas" :style="{display:licheck==index?'block':'none'}">
-              <dl v-for="con in data.content" class="foldpanel">
-                <dt>{{con.question}}</dt>
-                <dd v-html="con.answer">
-                 {{con.answer}}
-                </dd>
-              </dl>
-            </div>
+<!--          <div class="ydc-panes">-->
+<!--            <div class="ydc-pane" v-for="data,index in datas" :style="{display:licheck==index?'block':'none'}">-->
+<!--              <dl v-for="con in data.content" class="foldpanel">-->
+<!--                <dt>{{con.question}}</dt>-->
+<!--                <dd v-html="con.answer">-->
+<!--                 {{con.answer}}-->
+<!--                </dd>-->
+<!--              </dl>-->
+<!--            </div>-->
+
+          <el-collapse v-for="data,index in datas" :key="index" v-model="activeName" accordion :style="{display:licheck==index?'block':'none'}">
+            <el-collapse-item v-for="con,index in data.content" :title="con.question" :name="index" >
+              <div v-for="con,index in data.content" v-html="con.answer">{{con.answer}}</div>
+            </el-collapse-item>
+
+          </el-collapse>
+
 <!--            <div class="ydc-pane">-->
 <!--              <dl class="foldpanel" id="my-foldpanel1">-->
 <!--                <dt>一点车车讯号支持帐号主体类型修改吗？</dt>-->
@@ -308,6 +316,7 @@
       data(){
           return{
             licheck:0,
+            activeName: '1',
             datas:[
               {nav:'热门问题',content:[
                   {question:'如果出现一点车车讯号名称重复怎么办？',answer:"<p>如果您的帐号被冒名，您可以：</p><p>①帐号同名，并盗用帐号的图标、简介、文章，请发送相关证据（其他平台后台截图、抄袭文章链接、营业执照等）到wangyihao@service.netease.com。</p><p>②只是帐号同名，并未抄袭文章，帐号有注册商标，发送注册商标扫描照片至wangyihao@service.netease.com；没有注册商标，不算侵权，原则上无法处理。</p>"},
