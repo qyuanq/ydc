@@ -43,9 +43,9 @@
             </div>
             <div class="ydc-login-box">
 
-              <a href="#" target="_blank" >立即注册</a>
+              <a href="#"  @click="$router.push('/reg')">立即注册</a>
               <span>|</span>
-              <a href="customer.html" target="_blank">常见问题</a>
+              <a href="javascript:;" target="_blank" @click="$router.push('/customer')">常见问题</a>
 
             </div>
           </form>
