@@ -21,7 +21,7 @@
               <div class="ydc-user-info-func ydc-flex">
                 <span class="ydc-tag">账号审核中</span>
                 <span class="ydc-mal"><i class="ydc-icon ydc-icon-mail fl"></i><em>12</em></span>
-                <a href="javascript:;">退出</a>
+                <a href="javascript:;" @click="exit()">退出</a>
               </div>
             </div>
           </div>
@@ -33,7 +33,13 @@
 
 <script>
     export default {
-        name: "headers"
+        name: "headers",
+      methods:{
+          exit(){
+            localStorage.removeItem("token");
+            this.$router.push('/login');
+          }
+      }
     }
 </script>
 
