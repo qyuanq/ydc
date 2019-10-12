@@ -1,26 +1,38 @@
 <template>
-  <div class="ydc-right-banner">
-    <div class="slideshow-container">
-      <a href="https://xihazahuopu.taobao.com/" target="_blank" class="mySlides fade" style="display: block">
-        <img src="../assets/images/ad/ad1.jpg" style="width:100%">
-      </a>
-      <a href="https://weibo.com/525135676" target="_blank" class="mySlides fade">
-        <img src="../assets/images/ad/ad2.jpg" style="width:100%">
-      </a>
-      <a href="http://www.a-ui.cn/" target="_blank" class="mySlides fade">
-        <img src="../assets/images/ad/ad3.jpg" style="width:100%">
-      </a>
-    </div>
-  </div>
+  <el-carousel indicator-position="outside" >
+    <el-carousel-item v-for="item,index in imgs" :key="index">
+      <img :src="item" class="img-s">
+    </el-carousel-item>
+  </el-carousel>
 </template>
 
 <script>
+  import ad1 from '@/assets/images/ad/ad1.jpg'
+  import ad2 from '@/assets/images/ad/ad2.jpg'
+  import ad3 from '@/assets/images/ad/ad3.jpg'
+
     export default {
-        name: "rightBanner"
+        name: "rightBanner",
+        data(){
+            return{
+              imgs:[ad1,ad2,ad3]
+            }
+        }
     }
 </script>
-
+<style>
+  .el-carousel__container{
+    height:125px;
+  }
+  .el-carousel__indicators--outside{
+    display:none;
+  }
+</style>
 <style scoped>
+  .img-s{
+    width:100%;
+    max-wiath:100%;
+  }
   .ydc-right-banner {
     margin-top: 20px;
     width: 100%;
